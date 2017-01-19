@@ -10,7 +10,7 @@
 
 double parse_expression(void);
 
-double parse_primary_expression()
+double parse_factor()
 {
 
     double value = 0.0;
@@ -50,7 +50,7 @@ double parse_term()
     double v2;
     int operator;
 
-    v1 = parse_primary_expression();
+    v1 = parse_factor();
     for (;;) {
 
         if (token.kind != MUL_OPERATOR_TOKEN
@@ -58,7 +58,7 @@ double parse_term()
             break;
         }
         operator = token.kind;
-        v2 = parse_primary_expression();
+        v2 = parse_factor();
         if (operator == MUL_OPERATOR_TOKEN) {
             v1 *= v2;
         } else if (operator == DIV_OPERATOR_TOKEN) {
